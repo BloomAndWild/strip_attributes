@@ -64,6 +64,10 @@ module StripAttributes
       replace_newlines = options[:replace_newlines]
       regex            = options[:regex]
     end
+    
+    if value.respond_to?(:compact)
+      value = value.compact
+    end
 
     if value.respond_to?(:strip)
       value = (value.blank? && !allow_empty) ? nil : value.strip
